@@ -27,6 +27,8 @@ Le mode NAT permet à la VM d’accéder à Internet tout en restant isolée du 
 - Création d’un utilisateur non-root
 - Installation du serveur OpenSSH : Oui
 
+![Installation réussie via VMware](images\VMware.png)
+
 ## Mise à jour du système
 
 `sudo apt update && sudo apt upgrade -y`
