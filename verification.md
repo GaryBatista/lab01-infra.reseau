@@ -1,6 +1,9 @@
 A inclure :
 
-- SSH OK depuis l’hôte
-- Port 80 accessible
+- compte root désactivé
+- port 22 > port 2222
+  - SSH okay
+- Installation de Apache faite
+  - port 80 accessible
 - Ports non nécessaires fermés
-- Firewall actif
+- [x] Firewall actif 
