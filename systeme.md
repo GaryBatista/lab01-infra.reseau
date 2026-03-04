@@ -7,20 +7,21 @@
 `su -`
 (le tiret permet une connexion complète de root)
 
-`usermod -aG sudo gary`
+`usermod -aG sudo user`
 
 
 
 Fonctionnnement de usermod :
-
 [...]
 Dans la commande précédente :
 
 - `-a` = append (ne supprime pas les autres groupes)
 - `G` = groupes
 
-
 ---
+
+
+
 
 ### Permissions (chmod, chown)
 
