@@ -1,8 +1,9 @@
 A inclure :
 
-- SSH OK depuis l’hôte
-    sudo ufw status numbered
-- Port 80 accessible
+- compte root désactivé
+- port 22 > port 2222
+  - SSH okay
+- Installation de Apache faite
+  - port 80 accessible
 - Ports non nécessaires fermés
-  - incoming : deny
-- Firewall actif
+- [x] Firewall actif 
