@@ -24,13 +24,23 @@ où l'on témoigne que le résultat passe de :
 
 
 ## UFW
+####  Gestion des règles de UFW
+
+- `sudo ufw allow` permet d'ajouter une règle d'autorisation de connexion
+- `sudo ufw deny` permet de d'ajouter une règles d'interdiction de connexion
+- `sudo ufw delete` permet de supprimer une règle définie. Il faut indiquer le nom de la règle à la suite de cette commande pour que cela fonctionne. Par exemple, pour supprimer une règle autorisant la connexion sur le port 80, il faut entrer `sudo ufw delete allow 80/tcp`.
+
 ### Installation et configuration de UFW
-`sudo apt install ufw`  permet d'installer UFW
-`sudo ufw default deny incoming` permet de renseigner la règle selon laquelle le trafic entrant est filtré par UFW, sauf contre-indication.
-`sudo ufw default allow outgoing` permet de renseigner une seconde règle, définissant que le trafic sortant est autorisé par UFW.
-`sudo ufw allow 2222/tcp` permet d'autoriser la connexion en SSH sur ce port, précédemment défini sur 2222.
-`sudo ufw enable` permet d'activer le service et de mettre en rigueur les règles précédemment définies.
-`sudo ufw status numbered` permet d'assigner des numéros aux règles définies.
+
+- `sudo apt install ufw`  permet d'installer UFW
+- `sudo ufw default deny incoming` permet de renseigner la règle selon laquelle le trafic entrant est filtré par UFW, sauf contre-indication.
+- `sudo ufw default allow outgoing` permet de renseigner une seconde règle, définissant que le trafic sortant est autorisé par UFW.
+- `sudo ufw allow 2222/tcp` permet d'autoriser la connexion en SSH sur ce port, précédemment défini sur 2222.
+- `sudo ufw enable` permet d'activer le service et de mettre en rigueur les règles précédemment définies.
+- `sudo ufw status numbered` permet d'assigner des numéros aux règles définies.
+
+
+
 
 ### Explication de la commande "ufw status numbered"
 
@@ -60,3 +70,17 @@ Tous les autres ports sont bloqués, ce qui est la bonne pratique conformément 
 
 
 ### Où vérifier les tentatives de connexion
+
+`w` permet de vor les connexions actuelles. On témoigne de cela de cette manière :
+![Commande W](/images/commandeW.png)
+
+`last` permet de voir les dernières connexions.
+![commandeLast](/images/commandeLast.png)
+
+`sudo journalctl -u ssh` permet d'avoir un historique beaucoup plus détaillé des connexions réalisées.
+  - `-u` en paramètre permet de spécifier une "unité". C'est l'équivalent d'un service dans journalctl. Cela permet de filtrer.
+
+`sudo journalctl | grep "Failed password"` permet de filtrer les résultats pour n'avoir que les échecs de connexions
+
+![sudo journalctl|grep "Failed Password"](/images/journalctl.grepFailedPassword.png)
+
