@@ -22,9 +22,8 @@ Le mode NAT permet à la VM d’accéder à Internet tout en restant isolée du 
 ## Installation du système
 
 - Langue : Anglais
-- Installation minimale
+- Installation minimale, (sans GNOME)
 - Fuseau horaire : Europe/Paris
-- Création d’un utilisateur non-root
 - Installation du serveur OpenSSH : Oui
 
 ![Installation réussie via VMware](images\VMware.png)
