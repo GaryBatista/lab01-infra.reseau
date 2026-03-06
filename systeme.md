@@ -10,7 +10,8 @@ permet de changer les droits d'accès d'un fichier ou d'un répertoire.
 ```bash
 chown
 ```
-permet de changer le propriétaire d'un fichier ou d'un répertoire. `chown` permet d'avoir un contrôle plus fin, notamment en terme de monitoring : définir et compter plutôt sur les droits d'un propriétaire plutôt que d'un groupe permet d'améliorer la tracabilité des actions.
+permet de changer le propriétaire d'un fichier ou d'un répertoire. 
+>`chown` permet d'avoir un contrôle plus fin, notamment en terme de monitoring : définir et compter plutôt sur les droits d'un propriétaire plutôt que d'un groupe permet d'améliorer la tracabilité des actions.
 
 ## "user n'est pas dans le dossier sudoers"
 
@@ -21,6 +22,7 @@ usermod -aG sudo user
 permet de donner les droits d'élévation de privilèges temporaires à user.
 - `-a` = append (ne supprime pas les autres groupes)
 - `G` = groupes
+
 En utilisant la commande `groups` à la suite, sudo apparait dans la liste de résultats, ce qui indique que le compte user peut utiliser cette commande.
 
 # Processus
@@ -37,7 +39,7 @@ top
 htop
 ```
 permettent de voir tous les processus en cours, classés en fonction de ceux qui consomment le plus de ressources sur la machine. 
-`htop` est un paquet à installer **qui est plus complet et moderne que top.**
+>`htop` est un paquet à installer **qui est plus complet et moderne que top.**
 
 <p align="center">
   <img src="images/htop.png" width="700">
@@ -45,7 +47,10 @@ permettent de voir tous les processus en cours, classés en fonction de ceux qui
   <em>Visualisation des processus avec htop</em>
 </p>
 
-`ps aux | grep ssh` permet d'afficher uniquement les processus concernant SSH parmis l'entièreté des processus.
+```bash
+ps aux | grep ssh
+```
+permet d'afficher uniquement les processus concernant SSH parmis l'entièreté des processus.
 
 #### Verification pratique avec Apache
 
@@ -60,8 +65,14 @@ ps aux | grep apache2
 </p>
 
 ### Kill
-`sudo kill <PID>` permet de terminer un service.
-`sudo kill -9 <PID>` permet de terminer un service **de force**. Cela implique une potentielle corruption de fichiers, ou une perte de donnnées.
+```bash
+sudo kill <PID>
+sudo kill -9 <PID>
+```
+permettent de terminer un service, renseigné par son Processus Identifier.
+Ajoute le paramètre `-9` permet de terminer un processus **de force**. Cela implique une potentielle corruption de fichiers, ou une perte de donnnées, mais est plus efficace si la tâche résiste. 
+
+> Il faut noter que certains malwares résistent au sudo kill classique, qui envoie un signal de "terminate" (SIGTERM). Si un processus nécessite un signal "kill" (SIGKILL), cela est déjà un signe de comportement suspect.
 
 PID
 : Processus IDentifier.
