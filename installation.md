@@ -1,6 +1,8 @@
 ## Objectif 
+
 Ce document décrit l’installation de l’environnement nécessaire au lab
 L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en SSH, servant de base aux manipulations réseau et sécurité.
+
 
 ### Matériel
 
@@ -9,6 +11,7 @@ L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en 
 - ISO : Ubuntu Server 22.04 LTS
 - Accès Internet
 
+
 ## Création de la machine virtuelle
 
 - Type : Linux
@@ -16,8 +19,9 @@ L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en 
 - Mémoire : 2 Go
 - CPU : 2 vCPU
 - Disque : 20 Go (VDI, allocation dynamique)
-- Carte réseau : NAT
-Le mode NAT permet à la VM d’accéder à Internet tout en restant isolée du réseau local.
+- Carte réseau : Bridge
+  - Ce mode permet ensuite de se connecter à un service Apache à partir de la machien hôte de la VM.
+
 
 ## Installation du système
 
@@ -26,7 +30,12 @@ Le mode NAT permet à la VM d’accéder à Internet tout en restant isolée du 
 - Fuseau horaire : Europe/Paris
 - Installation du serveur OpenSSH : Oui
 
-![Installation réussie via VMware](images\VMware.png)
+<p align="center">
+  <img src="images/VMware.png" width="700">
+  <br>
+  <em>Installation réussie via VMware</em>
+</p>
+
 
 ## Mise à jour du système
 
@@ -41,8 +50,6 @@ Le mode NAT permet à la VM d’accéder à Internet tout en restant isolée du 
 
 
 ## Problèmes rencontrés
+Le navigateur n'arrive pass à se connecter au serveur Apache, alors que la commande curl parvient malgré tout à récupérer le contenu HTML.
 
-## Difficultés rencontrées
-
-
-## Conclusion
+La carte réseau était fixé sur NAT, et non pas sur Bridge.
