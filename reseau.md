@@ -1,25 +1,26 @@
-À inclure :
+### Configuration réseau
 
-- Configuration réseau (NAT, IP)
+La VM est configurée en **mode Bridge**. Cela permet :  
+- À la VM d’obtenir une adresse IP sur le même réseau local que l’hôte.  
+- À l’hôte et aux autres machines du réseau local d’accéder directement à la VM.  
+- De simplifier (/permettre) les tests de services (SSH, HTTP) depuis l’hôte.  
 
-Commandes utilisées :
+> Le mode NAT aurait permis à la VM d’accéder à Internet, mais l’hôte ne peut pas se connecter directement aux services exposés.
 
-- `ip a`
-: permet de lister les cartes réseaux et le paramétrage réseau du système
-- `ip route`
-- `ss -tulpen`
-  - permet de lister les ports ouverts et les services en écoute du système. Concernant les paramètres `tulpen`, ils définissent chacun un service.
-    - t = TCP
-    - u = UDP
-    - l = listening
-    - p = processus
-    - e = inforamtions étendues
-    - n = sans résolution DNS
 
-Tests de connectivité
+### Commandes utiles pour le diagnostic réseau
 
-Ouverture des ports
+| Commande | Description |
+|----------|-------------|
+| `ip a` | Liste les interfaces réseau et leurs adresses IP. |
+| `ip route` | Affiche la table de routage, utile pour vérifier la passerelle par défaut. |
+| `ss -tulpen` | Liste les ports ouverts et les services en écoute.<br>Paramètres :<br>- t : TCP<br>- u : UDP<br>- l : listening<br>- p : montre le PID et le nom du processus<br>- e : informations étendues<br>- n : sans résolution DNS |
+| `ping <IP>` | Teste la connectivité avec une autre machine ou une passerelle. |
+| `curl http://<IP>` | Teste l’accès à un service HTTP depuis la VM. |
 
-Port | Service | État  | Justification
-22   | SSH     | Ouvert| Administration distante
-80   | HTTP    | Ouvert| Test de service web
+
+### Tests de connectivité depuis la VM
+
+`ping 8.8.8.8` vérifie la connexion Internet
+`ping 192.168.1.1` vérifie la connexion à la passerelle locale
+`curl http://192.168.1.50` vérifie que le service Apache répond.
