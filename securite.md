@@ -1,14 +1,24 @@
 Chaque action a été realisé dans l'ordre d'écriture du document. 
+# Root, et SSH
+## Désactivation de l'authentification par root
 
-### Désactiver la connexion de root en SSH
+`sudo passwd -S root`
+"root P" apparait. Le "P" indique que le compte root possède un mot de passe qui permet l'authentification.
+`sudo passwd -l root`
+`sudo passwd -S root`
+"root L" apparait. Le "L" indique que le compte root est "Locked", signifiant qu'il est impossible de s'authentifier avec.
 
-L’accès SSH direct au compte `root` a été désactivé afin de réduire la surface d’attaque et d’améliorer la traçabilité des actions d’administration. Il faut utiliser la commande suivante pour parvenir à cela :
+
+## Désactiver la connexion de root en SSH
+
+L’accès SSH direct au compte `root` est désactivé afin de réduire la surface d’attaque et d’améliorer la traçabilité des actions d’administration. Il faut utiliser la commande suivante pour parvenir à cela :
 `sudo nano /etc/ssh/sshd_config`
 
 puis rechercher la ligne PermitRootLogin, et lui indiquer le paramètre `no` de cette manière :
 `PermitRootLogin no`
 
 A chaque tentative de connexion en SSH via le compte de root, la permission sera refusée.
+
 
 ## Changement de port SSH 
 
@@ -21,16 +31,25 @@ Après redémarrage du service, via la commande `sudo systemctl restart ssh`, on
 où l'on témoigne que le résultat passe de :
 `LISTEN 0 128 0.0.0.0:22` -> `LISTEN 0 128 0.0.0.0:2222`.
 
+## Sécuriser le fichier de configuration de SSH.
+
+En utlisant la commande `ls -la /etc/ssh/sshd_config`, nous pouvons déterminer quelles sont les permissions accordées sur le fichier en question.
+```bash
+`-rw-r--r-- 1 root root 3409  1 mars  17:31 /etc/ssh/sshd_config`
+```
+
+`sudo chown root:root /etc/ssh/sshd_config`
 
 
-## UFW
-####  Gestion des règles de UFW
+# UFW
+##  Gestion des règles de UFW
 
 - `sudo ufw allow` permet d'ajouter une règle d'autorisation de connexion
 - `sudo ufw deny` permet de d'ajouter une règles d'interdiction de connexion
 - `sudo ufw delete` permet de supprimer une règle définie. Il faut indiquer le nom de la règle à la suite de cette commande pour que cela fonctionne. Par exemple, pour supprimer une règle autorisant la connexion sur le port 80, il faut entrer `sudo ufw delete allow 80/tcp`.
 
-### Installation et configuration de UFW
+
+## Installation et configuration de UFW
 
 - `sudo apt install ufw`  permet d'installer UFW
 - `sudo ufw default deny incoming` permet de renseigner la règle selon laquelle le trafic entrant est filtré par UFW, sauf contre-indication.
@@ -40,9 +59,7 @@ où l'on témoigne que le résultat passe de :
 - `sudo ufw status numbered` permet d'assigner des numéros aux règles définies.
 
 
-
-
-### Explication de la commande "ufw status numbered"
+## Explication de la commande "ufw status numbered"
 
 ```bash
 sudo ufw status verbose
@@ -69,18 +86,32 @@ Default: deny (incoming), allow (outgoing)
 Tous les autres ports sont bloqués, ce qui est la bonne pratique conformément au principe du moindre privilège.
 
 
-### Où vérifier les tentatives de connexion
+# Logs et authentifications
+## Connexions et historique
 
 `w` permet de vor les connexions actuelles. On témoigne de cela de cette manière :
-![Commande W](/images/commandeW.png)
+<p align="center">
+  <img src="images/commandeW.png" width="700">
+  <br>
+  <em></em>
+</p>
 
 `last` permet de voir les dernières connexions.
-![commandeLast](/images/commandeLast.png)
+<p align="center">
+  <img src="images/commandeLast.png" width="700">
+  <br>
+  <em></em>
+</p>
 
 `sudo journalctl -u ssh` permet d'avoir un historique beaucoup plus détaillé des connexions réalisées.
   - `-u` en paramètre permet de spécifier une "unité". C'est l'équivalent d'un service dans journalctl. Cela permet de filtrer.
 
-`sudo journalctl | grep "Failed password"` permet de filtrer les résultats pour n'avoir que les échecs de connexions
+`sudo journalctl | grep "Failed password"` permet de filtrer les résultats pour n'avoir que les échecs de connexions 
+<p align="center">
+  <img src="images/journalctl.grepFailedPassword.png" width="700">
+  <br>
+  <em>Résultat de la commande sudo journalctl|grep "Failed Password"</em>
+</p>
 
-![sudo journalctl|grep "Failed Password"](/images/journalctl.grepFailedPassword.png)
-
+`sudo journalctl -u ssh -f` permet de suivre en temps réel les connexions SSH
+- -f est le paramètre permettant de suivre en temps réel le log.
