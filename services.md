@@ -1,16 +1,8 @@
 #### Sommaire
 
-- [Installation du service Apache](#installation-du-service-apache)
-  - [Vérification de l'activité de Apache](#vérification-de-lactivité-de-apache)
-  - [Scan des ports à l'écoute](#scan-des-ports-à-lécoute)
-  - [Connexion sur Apache depuis l’hôte](#connexion-sur-apache-depuis-lhôte)
-
-
-# Installation du service Apache
-
-```bash
-sudo apt install apache2
-```
+- [Vérification de l'activité de Apache](#vérification-de-lactivité-de-apache)
+- [Scan des ports à l'écoute](#scan-des-ports-à-lécoute)
+- [Connexion sur Apache depuis l’hôte](#connexion-sur-apache-depuis-lhôte)
 
 Pour se connecter via le navigateur sur la page web Apache, il faut que la VM soit en bridge, que le port 80 soit autorisé par UFW `sudo ufw status verbose`, et que le service soit lancé.
 
@@ -60,14 +52,3 @@ En entrant l'adresse IP de la VM sur la machine hôte, nous pouvons nous connect
   <em>Connexion sur la page web du service Apache</em>
 </p>
 
-```bash
-sudo cat /var/log/apache2/access.log
-```
- permet d'accéder aux logs d'accès de Apache, comme affichés-ci dessous.
-
-
-<p align="center">
-  <img src="images/LogApache.png" width="700">
-  <br>
-  <em>Logs d'accès de Apache</em>
-</p>
