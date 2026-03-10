@@ -59,6 +59,8 @@ L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en 
 
 
 ## Problèmes rencontrés
-Le navigateur n'arrive pass à se connecter au serveur Apache, alors que la commande curl parvient malgré tout à récupérer le contenu HTML.
 
-La carte réseau était fixé sur NAT, et non pas sur Bridge.
+> *Le navigateur n'arrive pas à se connecter au serveur Apache, alors que la commande curl parvient malgré tout à récupérer le contenu HTML.*
+
+La carte réseau était fixée sur **NAT**, et non pas sur **Bridge**.
+Le mode Bridge intègre la VM dans le réseau comme étant une machine à part entière, et non plus "cachée" derrière la machine hôte. Une machine configurée en NAT n'accepte pas les connexions entrantes. Une connexion sur le serveur Apache via l'interface web de la machine hôte est voué à l'échec, sauf si du port forwarding est réalisé.
