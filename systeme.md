@@ -1,5 +1,6 @@
 #### Sommaire
 - [Permissions](#permissions)
+  - [Définitions des permissions](#définitions-des-permissions)
   - [chmod, chown](#chmod-chown)
   - ["user n'est pas dans le dossier sudoers"](#user-nest-pas-dans-le-dossier-sudoers)
 - [Processus](#processus)
@@ -9,6 +10,15 @@
     - [Kill](#kill)
 
 # Permissions
+## Définitions des permissions
+-rw-r--r--
+││ │ │ │
+││ │ │ └── autres : lecture
+││ │ └──── groupe : lecture
+││ └────── propriétaire : lecture + écriture
+│└──────── type de fichier
+└───────── permissions
+
 ## chmod, chown
 
 chmod et chown valent pour "change mode" et "change owner".
