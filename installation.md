@@ -1,11 +1,10 @@
 #### Sommaire
 - [Objectifs](#objectifs)
   - [Matériel](#matériel)
-- [Création de la machine virtuelle](#création-de-la-machine-virtuelle)
+- [Paramétrage de la machine virtuelle](#paramétrage-de-la-machine-virtuelle)
 - [Installation du système](#installation-du-système)
 - [Mise à jour du système](#mise-à-jour-du-système)
 - [Installation des différents services](#installation-des-différents-services)
-- [Installation du service Apache](#installation-du-service-apache)
 - [Problèmes rencontrés](#problèmes-rencontrés)
 
 ## Objectifs
@@ -22,7 +21,7 @@ L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en 
 - Accès Internet
 
 
-## Création de la machine virtuelle
+## Paramétrage de la machine virtuelle
 
 - Logiciel : VMware Wokstation
 - Type : Linux
@@ -65,22 +64,17 @@ sont des commandes qui respectivements permettent de témoingner de la version d
 ## Installation des différents services
 
 ```bash
-apt install -y ssh nmap curl git sudo
+apt install -y nmap curl git sudo ufw
 ```
 permet d'installer les services suivants :
-- ssh
 - nmap 
 - curl 
 - git 
-- sudo 
+- sudo
+- **ufw**
+- **apache2**
 
 Ces services seront utiles dans ce lab ou ultérieurement grâce à des clones de cette machine.
-
-## Installation du service Apache
-
-```bash
-sudo apt install apache2
-```
 
 ## Problèmes rencontrés
 
