@@ -6,13 +6,13 @@
   - [Sécurisation du fichier de configuration de SSH](#sécurisation-du-fichier-de-configuration-de-ssh)
 - [UFW](#ufw)
   - [Gestion des règles de UFW](#gestion-des-règles-de-ufw)
-  - [Installation et configuration de UFW](#installation-et-configuration-de-ufw)
+  - [Configuration de UFW](#configuration-de-ufw)
     - [Autorisation du flux TCP sur le port 2222](#autorisation-du-flux-tcp-sur-le-port-2222)
     - [Activation du service UFW](#activation-du-service-ufw)
     - [Explication de la commande "ufw status numbered"](#explication-de-la-commande-ufw-status-numbered)
 - [Logs et authentifications](#logs-et-authentifications)
-  - [Connexions et historique](#connexions-et-historique)
-    - [Différence entre journalctl et logs classiques](#différence-entre-journalctl-et-logs-classiques)
+  - [Connexions et historique du système Linux](#connexions-et-historique-du-système-linux)
+  - [Connexions et historique de Apache](#connexions-et-historique-de-apache)
 
 ---
 # Configuration de root et SSH
@@ -89,12 +89,7 @@ Il faut indiquer le nom de la règle à la suite de cette commande pour que cela
 > Par exemple, pour supprimer une règle autorisant la connexion sur le port 80, il faut entrer `sudo ufw delete allow 80/tcp`.
 
 
-## Installation et configuration de UFW
-
-```bash
-sudo apt install ufw
-```
-permet d'installer UFW.
+## Configuration de UFW
 
 ```bash
 sudo ufw default deny incoming
@@ -151,7 +146,7 @@ To                         Action      From
 
 
 # Logs et authentifications
-## Connexions et historique
+## Connexions et historique du système Linux
 
 ```bash
 w
@@ -195,4 +190,17 @@ sudo journalctl -u ssh -f
 permet de suivre en temps réel les connexions SSH
 `-f` est le paramètre permettant de suivre en temps réel le log.
 
-### Différence entre journalctl et logs classiques
+
+## Connexions et historique de Apache
+
+```bash
+sudo cat /var/log/apache2/access.log
+```
+ permet d'accéder aux logs d'accès de Apache, comme affichés-ci dessous.
+
+
+<p align="center">
+  <img src="images/LogApache.png" width="700">
+  <br>
+  <em>Logs d'accès de Apache</em>
+</p>
