@@ -1,18 +1,19 @@
 #### Sommaire
-- [Objectif](#objectif)
+- [Objectifs](#objectifs)
   - [Matériel](#matériel)
 - [Création de la machine virtuelle](#création-de-la-machine-virtuelle)
 - [Installation du système](#installation-du-système)
 - [Mise à jour du système](#mise-à-jour-du-système)
-- [Vérifications](#vérifications)
+- [Installation des différents services](#installation-des-différents-services)
+- [Installation du service Apache](#installation-du-service-apache)
 - [Problèmes rencontrés](#problèmes-rencontrés)
 
-## Objectif 
+## Objectifs
 
-Ce document décrit l’installation de l’environnement nécessaire au lab
-L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en SSH, servant de base aux manipulations réseau et sécurité.
+Ce document décrit l’installation de l’environnement nécessaire au lab.
+L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en SSH, nmap, Apache et d'autres services servant de base aux manipulations réseau et sécurité.
 
-
+---
 ### Matériel
 
 - Hôte : Windows 11
@@ -23,19 +24,20 @@ L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en 
 
 ## Création de la machine virtuelle
 
+- Logiciel : VMware Wokstation
 - Type : Linux
-- Version : Ubuntu (64-bit)
+- Version : Debian 13.3.0
 - Mémoire : 2 Go
 - CPU : 2 vCPU
 - Disque : 20 Go (VDI, allocation dynamique)
-- Carte réseau : Bridge
+- Carte réseau : **Bridge**
   - Ce mode permet ensuite de se connecter à un service Apache à partir de la machien hôte de la VM.
 
 
 ## Installation du système
 
 - Langue : Anglais
-- Installation minimale, (sans GNOME)
+- CLI (**sans GNOME ni environnement de bureau**)
 - Fuseau horaire : Europe/Paris
 - Installation du serveur OpenSSH : Oui
 
@@ -48,15 +50,37 @@ L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en 
 
 ## Mise à jour du système
 
-`sudo apt update && sudo apt upgrade -y`
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+permet de mettre à jour l'OS.
+
+```bash
+lsb_release -a
+ip a
+```
+sont des commandes qui respectivements permettent de témoingner de la version de l'OS utilisé, ainsi que de l'adresse IP de la machine virtuelle.
 
 
-## Vérifications
+## Installation des différents services
 
-- Version du système :
-`lsb_release -a`
-`ip a`
+```bash
+apt install -y ssh nmap curl git sudo
+```
+permet d'installer les services suivants :
+- ssh
+- nmap 
+- curl 
+- git 
+- sudo 
 
+Ces services seront utiles dans ce lab ou ultérieurement grâce à des clones de cette machine.
+
+## Installation du service Apache
+
+```bash
+sudo apt install apache2
+```
 
 ## Problèmes rencontrés
 
