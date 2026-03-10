@@ -1,4 +1,9 @@
-### Configuration réseau
+#### Sommaire
+- [Configuration réseau](#configuration-réseau)
+- [Commandes utiles pour le diagnostic réseau](#commandes-utiles-pour-le-diagnostic-réseau)
+- [Tests de connectivité depuis la VM](#tests-de-connectivité-depuis-la-vm)
+
+# Configuration réseau
 
 La VM est configurée en **mode Bridge**. Cela permet :  
 - À la VM d’obtenir une adresse IP sur le même réseau local que l’hôte.  
@@ -8,7 +13,7 @@ La VM est configurée en **mode Bridge**. Cela permet :
 > Le mode NAT aurait permis à la VM d’accéder à Internet, mais l’hôte ne peut pas se connecter directement aux services exposés.
 
 
-### Commandes utiles pour le diagnostic réseau
+# Commandes utiles pour le diagnostic réseau
 
 | Commande | Description |
 |----------|-------------|
@@ -19,7 +24,7 @@ La VM est configurée en **mode Bridge**. Cela permet :
 | `curl http://<IP>` | Teste l’accès à un service HTTP depuis la VM. |
 
 
-### Tests de connectivité depuis la VM
+# Tests de connectivité depuis la VM
 
 `ping 8.8.8.8` vérifie la connexion Internet
 `ping 192.168.1.1` vérifie la connexion à la passerelle locale

@@ -1,3 +1,13 @@
+#### Sommaire
+- [Permissions](#permissions)
+  - [chmod, chown](#chmod-chown)
+  - ["user n'est pas dans le dossier sudoers"](#user-nest-pas-dans-le-dossier-sudoers)
+- [Processus](#processus)
+    - [ps](#ps)
+    - [top et htop](#top-et-htop)
+      - [Verification pratique avec Apache](#verification-pratique-avec-apache)
+    - [Kill](#kill)
+
 # Permissions
 ## chmod, chown
 

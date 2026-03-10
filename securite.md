@@ -1,4 +1,21 @@
-# Root, et SSH
+#### Sommaire
+- [Configuration de root et SSH](#configuration-de-root-et-ssh)
+  - [Désactivation de l'authentification par root](#désactivation-de-lauthentification-par-root)
+  - [Désactivation de la connexion de root en SSH](#désactivation-de-la-connexion-de-root-en-ssh)
+  - [Modification du port SSH](#modification-du-port-ssh)
+  - [Sécurisation du fichier de configuration de SSH](#sécurisation-du-fichier-de-configuration-de-ssh)
+- [UFW](#ufw)
+  - [Gestion des règles de UFW](#gestion-des-règles-de-ufw)
+  - [Installation et configuration de UFW](#installation-et-configuration-de-ufw)
+    - [Autorisation du flux TCP sur le port 2222](#autorisation-du-flux-tcp-sur-le-port-2222)
+    - [Activation du service UFW](#activation-du-service-ufw)
+    - [Explication de la commande "ufw status numbered"](#explication-de-la-commande-ufw-status-numbered)
+- [Logs et authentifications](#logs-et-authentifications)
+  - [Connexions et historique](#connexions-et-historique)
+    - [Différence entre journalctl et logs classiques](#différence-entre-journalctl-et-logs-classiques)
+
+---
+# Configuration de root et SSH
 ## Désactivation de l'authentification par root
 
 `sudo passwd -S root`
@@ -8,7 +25,7 @@
 "root L" apparait. Le "L" indique que le compte root est "Locked", signifiant qu'il est impossible de s'authentifier avec.
 
 
-## Désactiver la connexion de root en SSH
+## Désactivation de la connexion de root en SSH
 
 L’accès SSH direct au compte `root` est désactivé afin de réduire la surface d’attaque et d’améliorer la traçabilité des actions d’administration. Il faut utiliser la commande suivante pour parvenir à cela :
 `sudo nano /etc/ssh/sshd_config`
@@ -19,7 +36,7 @@ puis rechercher la ligne PermitRootLogin, et lui indiquer le paramètre `no` de 
 A chaque tentative de connexion en SSH via le compte de root, la permission sera refusée.
 
 
-## Changement de port SSH 
+## Modification du port SSH 
 
 ```bash
 sudo nano /etc/ssh/sshd_config
@@ -38,7 +55,7 @@ Après redémarrage du service, via la commande `sudo systemctl restart ssh`, on
 où l'on témoigne que le résultat passe de :
 `LISTEN 0 128 0.0.0.0:22` -> `LISTEN 0 128 0.0.0.0:2222`.
 
-## Sécuriser le fichier de configuration de SSH.
+## Sécurisation du fichier de configuration de SSH
 
 ```bash
 ls -la /etc/ssh/sshd_config
@@ -86,14 +103,14 @@ sudo ufw default allow outgoing
 ```
 permet de renseigner une seconde règle définissant que le trafic sortant est autorisé par UFW.
 
-### Autoriser le flux TCP sur le port 2222
+### Autorisation du flux TCP sur le port 2222
 
 ```bash
 sudo ufw allow 2222/tcp
 ```
 permet d'autoriser le flux TCP sur le port 2222, soit donc la connexion en SSH sur ce dernier, **le service SSH ayant été précédemment défini sur 2222.**
 
-### Activer le service
+### Activation du service UFW
 
 ```bash
 sudo ufw enable
@@ -103,7 +120,7 @@ sudo ufw status numbered
 - `status numbered` sert à afficher les règles du firewall UFW avec un numéro associé à chaque règle. Ces numéros permettent ensuite de supprimer ou modifier facilement une règle.
 
 
-## Explication de la commande "ufw status numbered"
+### Explication de la commande "ufw status numbered"
 
 ```bash
 sudo ufw status verbose
@@ -174,3 +191,5 @@ sudo journalctl -u ssh -f
 ```
 permet de suivre en temps réel les connexions SSH
 `-f` est le paramètre permettant de suivre en temps réel le log.
+
+### Différence entre journalctl et logs classiques

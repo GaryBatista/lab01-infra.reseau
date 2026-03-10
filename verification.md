@@ -34,7 +34,7 @@ SECURITE.MD
 
 SERVICES.MD
 
-- [ ] Supprimer Nginx si non utilisé.
+- [x] Supprimer Nginx si non utilisé.
 
 - [ ] Ajouter petit rappel : après chaque installation, vérifier le service (systemctl status) et le port (ss -tulpen ou nmap).
 
@@ -42,13 +42,13 @@ VERIFICATION.MD
 
 Ajouter une vérification finale :
 
-- [ ] sudo ufw status verbose pour confirmer que seules les règles voulues sont actives.
+- [x] sudo ufw status verbose pour confirmer que seules les règles voulues sont actives.
 
-- [ ] Test final SSH + HTTP depuis l’hôte pour s’assurer que tout fonctionne après toutes les configurations.
+- [x] Test final SSH + HTTP depuis l’hôte pour s’assurer que tout fonctionne après toutes les configurations.
 
 2️⃣ Points techniques à vérifier pour la complétude
 
-- [ ]Les droits sudo pour ton utilisateur (groups) sont bien appliqués.
+- [ ] Les droits sudo pour ton utilisateur (groups) sont bien appliqués.
 
 - [ ] Les logs Apache et journaux SSH montrent bien ce que tu attends.
 
@@ -56,4 +56,4 @@ Ajouter une vérification finale :
 
 - [x] Les services critiques sont actifs (Apache, SSH).
 
-- [ ] Les images et captures sont à jour et bien nommées.
+- [x] Les images et captures sont à jour et bien nommées.

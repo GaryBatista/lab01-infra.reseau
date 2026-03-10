@@ -1,3 +1,12 @@
+#### Sommaire
+- [Objectif](#objectif)
+  - [Matériel](#matériel)
+- [Création de la machine virtuelle](#création-de-la-machine-virtuelle)
+- [Installation du système](#installation-du-système)
+- [Mise à jour du système](#mise-à-jour-du-système)
+- [Vérifications](#vérifications)
+- [Problèmes rencontrés](#problèmes-rencontrés)
+
 ## Objectif 
 
 Ce document décrit l’installation de l’environnement nécessaire au lab
