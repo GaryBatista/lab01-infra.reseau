@@ -14,33 +14,24 @@ Permissions
 
 - [ ] Ajouter exemples pratiques pour chmod et chown sur fichiers et dossiers (par exemple Apache ou dossier utilisateur).
 
-- [ ] Vérifier les permissions des fichiers critiques (ex : /etc/ssh/sshd_config).
-
-RESEAU.MD
-
-Tu viens de l’avoir réécrit, mais assure-toi que :
-
-- [x] Les tests ping/curl/SSH depuis l’hôte et la VM sont inclus.
-
-- [x] Explication du choix Bridge vs NAT est claire (tu l’as fait).
+- [x] Vérifier les permissions des fichiers critiques (ex : /etc/ssh/sshd_config).
 
 INSTALLATION.MD
 
-- [ ] Expliquer clairement le problème du navigateur avec Apache quand NAT était utilisé, et comment Bridge corrige ça.
+- [x] Expliquer clairement le problème du navigateur avec Apache quand NAT était utilisé, et comment Bridge corrige ça.
+
 - [ ] Vérifier que toutes les captures d’écran sont présentes et accessibles.
-SECURITE.MD
+
+
+## SECURITE.MD
 
 - [ ] Tu peux ajouter une mini-section sur fail2ban si tu veux montrer comment limiter les tentatives SSH échouées. Ce n’est pas obligatoire, mais c’est un bon complément sécurité pour un lab.
 
-SERVICES.MD
-
-- [x] Supprimer Nginx si non utilisé.
+## SERVICES.MD
 
 - [ ] Ajouter petit rappel : après chaque installation, vérifier le service (systemctl status) et le port (ss -tulpen ou nmap).
 
-VERIFICATION.MD
-
-Ajouter une vérification finale :
+## VERIFICATION.MD
 
 - [x] sudo ufw status verbose pour confirmer que seules les règles voulues sont actives.
 
