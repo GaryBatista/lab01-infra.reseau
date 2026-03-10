@@ -60,12 +60,15 @@ où l'on témoigne que le résultat passe de :
 ```bash
 ls -la /etc/ssh/sshd_config
 ```
-permet de déterminer quelles sont les permissions accordées sur le fichier en question.
+permet de déterminer quelles sont les permissions accordées sur le fichier en question. Effectuer cette commande permet d'afficher le prompt suivant :
+
 ```bash
 `-rw-r--r-- 1 root root 3409  1 mars  17:31 /etc/ssh/sshd_config`
 ```
-
+Afin de modifier le propriétaire du fichier, il faut rentrer la commande suivante :
+```bash
 `sudo chown root:root /etc/ssh/sshd_config`
+```
 
 
 # UFW
