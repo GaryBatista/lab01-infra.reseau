@@ -1,13 +1,13 @@
 #### Sommaire
-
 - [Vérification de l'activité de Apache](#vérification-de-lactivité-de-apache)
 - [Connexion sur Apache depuis l’hôte](#connexion-sur-apache-depuis-lhôte)
 
-Pour se connecter via le navigateur sur la page web Apache, il faut 
-- que la VM soit en bridge, 
-- que le port 80 soit autorisé par UFW `sudo ufw status verbose`, 
-- et que le service soit lancé.
 
+
+#### Objectifs 
+
+
+---
 
 ## Vérification de l'activité de Apache
 
@@ -25,6 +25,11 @@ apache2.service - The Apache HTTP Server
 
 
 ## Connexion sur Apache depuis l’hôte
+
+Pour se connecter via le navigateur sur la page web Apache, il faut :
+- que la VM soit en bridge, 
+- que le port 80 soit autorisé par UFW `sudo ufw status verbose`, 
+- et que le service soit lancé.
 
 En entrant l'adresse IP de la VM sur la machine hôte, nous pouvons nous connecter sur la page web gérée par le service Apache.
 
