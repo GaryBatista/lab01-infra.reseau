@@ -1,11 +1,11 @@
-#### Sommaire
+2#### Sommaire
 - [Installation de la machine virtuelle](#installation-de-la-machine-virtuelle)
   - [Paramétrage initial](#paramétrage-initial)
   - [Mise à jour](#mise-à-jour)
 - [Installation des différents services](#installation-des-différents-services)
 - [Problèmes rencontrés](#problèmes-rencontrés)
 
-## Objectifs
+#### Objectifs
 
 Ce document décrit l’installation de l’environnement nécessaire au lab.
 L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en SSH, comportant des services essentiels au déroulement du lab, comme nmap, Apache.
