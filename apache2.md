@@ -1,10 +1,12 @@
 #### Sommaire
 
 - [Vérification de l'activité de Apache](#vérification-de-lactivité-de-apache)
-- [Scan des ports à l'écoute](#scan-des-ports-à-lécoute)
 - [Connexion sur Apache depuis l’hôte](#connexion-sur-apache-depuis-lhôte)
 
-Pour se connecter via le navigateur sur la page web Apache, il faut que la VM soit en bridge, que le port 80 soit autorisé par UFW `sudo ufw status verbose`, et que le service soit lancé.
+Pour se connecter via le navigateur sur la page web Apache, il faut 
+- que la VM soit en bridge, 
+- que le port 80 soit autorisé par UFW `sudo ufw status verbose`, 
+- et que le service soit lancé.
 
 
 ## Vérification de l'activité de Apache
@@ -19,26 +21,6 @@ Le résultat de cette commande est le suivant :
 apache2.service - The Apache HTTP Server
      Loaded: loaded (/usr/lib/systemd/system/apache2.service; enabled; preset: enabled)
      Active: active (running)
-```
-
-
-## Scan des ports à l'écoute
- 
-```bash
-nmap 192.168.1.50 #IP de la VM
-```
-permet de connaitre les ports et services en écoute. La mention de http sur le port 80 désigne Apache.
-Voici le prompt qui en résulte :
-```bash
-Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-05 15:52 CET
-Nmap scan report for masterDeb (192.168.1.50)
-Host is up (0.00014s latency).
-Not shown: 996 closed tcp ports (conn-refused)
-PORT     STATE SERVICE
-80/tcp   open  http
-139/tcp  open  netbios-ssn
-445/tcp  open  microsoft-ds
-2222/tcp open  EtherNetIP-1
 ```
 
 
