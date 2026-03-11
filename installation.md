@@ -1,27 +1,21 @@
 #### Sommaire
-- [Objectifs](#objectifs)
-  - [Matériel](#matériel)
-- [Paramétrage de la machine virtuelle](#paramétrage-de-la-machine-virtuelle)
-- [Installation du système](#installation-du-système)
-- [Mise à jour du système](#mise-à-jour-du-système)
+- [Installation de la machine virtuelle](#installation-de-la-machine-virtuelle)
+  - [Paramétrage initial](#paramétrage-initial)
+  - [Mise à jour](#mise-à-jour)
 - [Installation des différents services](#installation-des-différents-services)
 - [Problèmes rencontrés](#problèmes-rencontrés)
 
 ## Objectifs
 
 Ce document décrit l’installation de l’environnement nécessaire au lab.
-L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en SSH, nmap, Apache et d'autres services servant de base aux manipulations réseau et sécurité.
+L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en SSH, comportant des services essentiels au déroulement du lab, comme nmap, Apache.
 
 ---
-### Matériel
-
-- Hôte : Windows 11
-- Hyperviseur : VMware Workstation
-- ISO : Ubuntu Server 22.04 LTS
-- Accès Internet
 
 
-## Paramétrage de la machine virtuelle
+
+# Installation de la machine virtuelle
+## Paramétrage initial
 
 - Logiciel : VMware Wokstation
 - Type : Linux
@@ -31,10 +25,6 @@ L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en 
 - Disque : 20 Go (VDI, allocation dynamique)
 - Carte réseau : **Bridge**
   - Ce mode permet ensuite de se connecter à un service Apache à partir de la machien hôte de la VM.
-
-
-## Installation du système
-
 - Langue : Anglais
 - CLI (**sans GNOME ni environnement de bureau**)
 - Fuseau horaire : Europe/Paris
@@ -47,7 +37,7 @@ L’objectif est de disposer d’une machine Linux fonctionnelle, accessible en 
 </p>
 
 
-## Mise à jour du système
+## Mise à jour
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -58,25 +48,24 @@ permet de mettre à jour l'OS.
 lsb_release -a
 ip a
 ```
-sont des commandes qui respectivements permettent de témoingner de la version de l'OS utilisé, ainsi que de l'adresse IP de la machine virtuelle.
+sont des commandes qui respectivements permettent de témoigner de la version de l'OS utilisé, ainsi que de l'adresse IP de la machine virtuelle, utile pour s'y connecter en SSH.
 
 
-## Installation des différents services
+# Installation des différents services
 
 ```bash
-apt install -y nmap curl git sudo ufw
+apt install -y nmap curl sudo ufw
 ```
 permet d'installer les services suivants :
 - nmap 
 - curl 
-- git 
 - sudo
 - **ufw**
 - **apache2**
 
 Ces services seront utiles dans ce lab ou ultérieurement grâce à des clones de cette machine.
 
-## Problèmes rencontrés
+# Problèmes rencontrés
 
 > *Le navigateur n'arrive pas à se connecter au serveur Apache, alors que la commande curl parvient malgré tout à récupérer le contenu HTML.*
 
