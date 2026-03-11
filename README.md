@@ -44,7 +44,7 @@ C --> D
 C --> E
 E --> D
 
-F[Client Browser] -->|HTTP 80| E
+F[Navigateur internet] -->|HTTP 80| E
 ```
 
 

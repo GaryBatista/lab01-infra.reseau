@@ -1,4 +1,4 @@
-2#### Sommaire
+#### Sommaire
 - [Installation de la machine virtuelle](#installation-de-la-machine-virtuelle)
   - [Paramétrage initial](#paramétrage-initial)
   - [Mise à jour](#mise-à-jour)
