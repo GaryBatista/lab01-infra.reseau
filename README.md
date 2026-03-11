@@ -1,41 +1,51 @@
 #### Sommaire
 - [Lab 01 — Infrastructure \& Réseaux](#lab-01--infrastructure--réseaux)
   - [Objectifs](#objectifs)
-  - [Architecture du lab01](#architecture-du-lab01)
-    - [Les axes principaux du lab](#les-axes-principaux-du-lab)
+  - [Architecture du lab01-infra.reseau](#architecture-du-lab01-infrareseau)
 
 
 # Lab 01 — Infrastructure & Réseaux
 ## Objectifs
 
-Ce premier laboratoire a pour objectif de mettre en place un environnement de travail virtualisé et d'explorer les bases d'un système Linux dans une perspective de cybersécurité.
+L'objectif de ce lab est de s'exercer spécifiquement sur :
+1. l'observation des processus et logs système
+2. la gestion des permissions 
+3. l'utilisation de
+   1. **UFW**
+   2. **Apache2**
+   3. **nmap**
 
-L'objectif est de comprendre :
-- les fondamentaux Linux
-- l'installation et l'analyse d'un service réseau
-- l'observation des processus et logs système
-- la découverte réseau à l'aide d'outils de scan
+Plus globalement, ce lab permet également de progresser sur :
+- l'exploration du système Linux grâce aux commandes `tree`. 
+- Observation de l'activité du système grâce aux commandes `ps` et `htop`.
 
-Ce laboratoire constitue la base des labs suivants, notamment l'implémentation d'une infrastructure Active Directory et l'analyse de sécurité.
+Les commandes telles que `ls`, `cd`, `find` et d'autres font parties d'un socle de connaissance de fond qui ne sera pas explicitement mis en avant, dans ce lab ni dans les prochains. 
 
-Les VM utilisés ici dans les labs sont des clones de VM master. Les configurations indiquées valent également pour les clones.
+## Architecture du lab01-infra.reseau
 
-## Architecture du lab01
+```mermaid
+flowchart TD
 
-Host Machine
-      │
-VirtualBox
-      │
-Ubuntu VM
-      │
-Apache Web Server
+A[Machine hôte]
 
+subgraph Virtualisation
+B[VMware Workstation]
+end
 
-### Les axes principaux du lab
+subgraph Machine virtuelle
+C[Debian]
+D[Apache2]
+E[UFW]
+end
 
-1. Exploration du système Linux grâce aux commandes `ls`, `tree` (je ne mentionnerai pas ou peu `cd` ou `find`).
-2. Observation de l'activité du système grâce aux commandes `ps` et `htop`.
-3. Gestion des permissions grâce à `chmod`, `chown`, `usermod`
+A --> B
+B --> C
+C --> D
+C --> E
+E --> D
+
+F[Client Browser] -->|HTTP 80| E
+```
 
 
 
