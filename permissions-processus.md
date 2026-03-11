@@ -11,6 +11,7 @@
 
 # Permissions
 ## Définitions des permissions
+
 -rw-r--r--
 ││ │ │ │
 ││ │ │ └── autres : lecture
@@ -18,6 +19,8 @@
 ││ └────── propriétaire : lecture + écriture
 │└──────── type de fichier
 └───────── permissions
+
+C'EST FAUX CA
 
 ## chmod, chown
 
